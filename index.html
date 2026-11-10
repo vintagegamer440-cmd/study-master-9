@@ -131,6 +131,7 @@ function copyQuestion(){let q=document.getElementById('question').value.trim();i
 function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='study-master-9-progress.json';a.click();URL.revokeObjectURL(a.href)}
 function init(){let s=document.getElementById('subjectSelect'),f=document.getElementById('filterSubject');subjects.forEach(x=>{s.add(new Option(x.name,x.id));f.add(new Option(x.name,x.id))});renderRoutine();renderAll()}
 init();
+if(location.hash==='#chapters') showTab('chapters');
 </script>
 </body>
 </html>
