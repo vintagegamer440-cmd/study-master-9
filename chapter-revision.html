@@ -5,6 +5,24 @@
 <style>
 :root{color-scheme:dark;--bg:#0b1220;--panel:#142238;--line:#30445f;--text:#eef4ff;--muted:#a8b7ce;--blue:#83baff;--mint:#65e6ce;--gold:#e9c46a}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Arial,sans-serif}.wrap{max-width:1000px;margin:auto;padding:20px}a{color:var(--blue)}h1{font-size:clamp(27px,5vw,42px);line-height:1.15;margin:10px 0}h2{font-size:23px;margin:0 0 10px}.muted{color:var(--muted)}.panel,.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}.step h3{margin:0 0 6px}.tag{display:inline-block;background:#203b5a;border-radius:30px;padding:3px 10px;font-size:12px;color:#d8eaff}.bar{height:8px;background:#263a53;border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--mint)}textarea,input{width:100%;background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:11px;color:var(--text);font:inherit}textarea{min-height:105px;resize:vertical}label{display:block;font-weight:650;margin:12px 0 5px}button,.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#071326;font-weight:750;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 5px 5px 0}.secondary{background:#243650;color:var(--text);border:1px solid var(--line)}.notice{padding:13px 15px;background:#302a1b;color:#f5e7c5;border-left:3px solid var(--gold);border-radius:8px;margin:14px 0}.actions{display:flex;flex-wrap:wrap;gap:7px}small{color:var(--muted)}.qa{border-top:1px solid var(--line);padding:12px 0}.qa:first-of-type{border-top:0}.qa label{margin-top:7px}.subject-tip{background:#102d36;border:1px solid #24605d;padding:12px;border-radius:12px;margin:12px 0}.section-nav{display:flex;gap:8px;flex-wrap:wrap}.section-nav a{background:#203650;padding:7px 10px;border-radius:9px;text-decoration:none;font-size:13px}
+
+/* Mobile polish: sharper edges, clearer contrast and comfortable touch targets */
+:root{--line:#425775}
+button,.btn,.chapter-open{min-height:44px}
+.card,.panel,.step,.hero,.hero-stat,.day,.stat,.notice{border-radius:6px}
+button,.btn,.chapter-open,.tab,.pill,.tag,.logo{border-radius:4px}
+input,select,textarea{border-radius:4px;min-height:44px}
+:focus-visible{outline:3px solid var(--cyan,#5eead4);outline-offset:3px}
+@media(max-width:600px){
+ .wrap{padding:12px}
+ .hero{padding:16px;margin:16px 0}
+ .card,.panel,.step{padding:14px}
+ .grid,.schedule,.formrow{grid-template-columns:minmax(0,1fr)}
+ .chapter{grid-template-columns:minmax(0,1fr);gap:8px}
+ .checks{gap:10px}
+ .check{font-size:12px;min-height:32px}
+ h1{overflow-wrap:anywhere}
+}
 </style></head><body><main class="wrap">
 <a href="./index.html">← Study Master 9 Home</a>
 <div class="panel"><span class="tag">ALL SUBJECTS · CHAPTER WORKSPACE</span><h1 id="chapterTitle">Chapter Notes, Answers & Revision</h1><p id="subjectLine" class="muted">Chapter-wise learning workspace</p><div class="bar"><i id="progressBar"></i></div><small id="progressText">0 of 8 revision tasks completed</small></div>
