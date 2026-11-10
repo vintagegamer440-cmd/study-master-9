@@ -30,7 +30,25 @@ input,select,textarea{width:100%;background:#0c1728;border:1px solid #344762;col
 .chatbox{height:260px;overflow:auto;background:#0c1728;border:1px solid var(--line);border-radius:14px;padding:12px}.bubble{padding:10px 12px;border-radius:13px;margin:8px 0;max-width:90%;font-size:13px;white-space:pre-wrap}.bot{background:#1a2b43}.user{background:#174d53;margin-left:auto}.notice{border-left:3px solid var(--yellow);padding:10px 12px;background:#2c281a;color:#e8d8a5;border-radius:8px;font-size:12px;margin-top:12px}
 footer{color:#8292aa;text-align:center;font-size:11px;padding:28px 0 12px}.hidden{display:none!important}
 @media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.statgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:540px){.wrap{padding:14px}.grid,.schedule,.formrow{grid-template-columns:1fr}.hero{padding:19px}.section-title{align-items:start;flex-direction:column}}
-.chapter-open{display:block;text-align:left;background:#203b5a;color:#eaf4ff;border:1px solid #35506f;border-radius:10px;padding:10px 12px;font-weight:750;margin:0 0 7px;max-width:100%;white-space:normal}.chapter-open:hover{background:#294a70}</style>
+.chapter-open{display:block;text-align:left;background:#203b5a;color:#eaf4ff;border:1px solid #35506f;border-radius:10px;padding:10px 12px;font-weight:750;margin:0 0 7px;max-width:100%;white-space:normal}.chapter-open:hover{background:#294a70}
+/* Mobile polish: sharper edges, clearer contrast and comfortable touch targets */
+:root{--line:#425775}
+button,.btn,.chapter-open{min-height:44px}
+.card,.panel,.step,.hero,.hero-stat,.day,.stat,.notice{border-radius:6px}
+button,.btn,.chapter-open,.tab,.pill,.tag,.logo{border-radius:4px}
+input,select,textarea{border-radius:4px;min-height:44px}
+:focus-visible{outline:3px solid var(--cyan,#5eead4);outline-offset:3px}
+@media(max-width:600px){
+ .wrap{padding:12px}
+ .hero{padding:16px;margin:16px 0}
+ .card,.panel,.step{padding:14px}
+ .grid,.schedule,.formrow{grid-template-columns:minmax(0,1fr)}
+ .chapter{grid-template-columns:minmax(0,1fr);gap:8px}
+ .checks{gap:10px}
+ .check{font-size:12px;min-height:32px}
+ h1{overflow-wrap:anywhere}
+}
+</style>
 </head>
 <body>
 <div class="wrap">
