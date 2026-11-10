@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vintagegamer440-cmd.github.io/study-master-9/sitemap.xml
