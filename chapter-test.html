@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter Mock Test | Study Master 9</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#142238;--line:#30445f;--text:#eef4ff;--muted:#a8b7ce;--blue:#83baff;--gold:#e9c46a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Arial,sans-serif}.wrap{max-width:900px;margin:auto;padding:20px}a{color:var(--blue)}.panel,.q{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px;margin:14px 0}h1{font-size:clamp(27px,5vw,40px);line-height:1.15}.muted,small{color:var(--muted)}textarea{width:100%;min-height:75px;background:#0b1728;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit}button,.btn{display:inline-block;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#071326;font-weight:750;text-decoration:none;cursor:pointer;margin:5px 5px 5px 0}.secondary{background:#243650;color:var(--text);border:1px solid var(--line)}.tag{display:inline-block;background:#203b5a;padding:3px 10px;border-radius:30px;font-size:12px}.notice{background:#302a1b;color:#f5e7c5;border-left:3px solid var(--gold);border-radius:8px;padding:13px 15px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+</style></head><body><main class="wrap">
+<a href="./index.html">← Home</a><div class="panel"><span class="tag">DAY 2 · MOCK TEST</span><h1 id="title">Chapter Mock Test</h1><p id="sub" class="muted"></p><p><b>Time:</b> 35 minutes · <b>Marks:</b> 30 · Open book nahi dekhna</p></div>
+<div class="notice"><b>How to use:</b> Ye chapter-wise active-recall test sheet hai. Apni textbook aur revision notes se chapter-specific answers likho. Pehle bina dekhe attempt karo; phir textbook se check karke score do.</div>
+<div id="questions"></div>
+<div class="panel"><h2>Self-assessment</h2><p>Har answer textbook se check karo. Sahi points ke hisaab se apne marks do.</p><label>Score (out of 30)</label><input id="score" type="number" min="0" max="30" style="width:130px;background:#0b1728;color:white;border:1px solid #30445f;padding:10px;border-radius:9px"><label>What should I revise again?</label><textarea id="mistakes" placeholder="Write your mistakes and topics to revisit..."></textarea><button onclick="submitTest()">Submit test & save result</button><p id="result" class="muted" aria-live="polite"></p></div>
+<div class="panel"><h2>Want a chapter-specific question paper?</h2><p>Use this prompt with ChatGPT after reading your chapter. It asks for questions based on the exact textbook chapter, not made-up chapter facts.</p><button class="secondary" onclick="askAI()">Create a chapter-specific mock test ↗</button></div>
+<script>
+const p=new URLSearchParams(location.search),id=p.get('id')||'chapter',name=p.get('name')||'Selected Chapter',subject=p.get('subject')||'Subject',key='sm9_revision_'+id;
+const state=JSON.parse(localStorage.getItem(key)||'{}');document.getElementById('title').textContent=name+' — Mock Test';document.getElementById('sub').textContent=subject+' · Attempt without notes first';
+const qs=[
+['Section A · 1 mark','Write the meaning/definition of one important term from this chapter.'],
+['Section A · 1 mark','State one key fact, rule, date or principle from the chapter.'],
+['Section A · 1 mark','Write one example given or discussed in the chapter.'],
+['Section A · 1 mark','Name one important person, concept, formula or process (as applicable).'],
+['Section B · 2 marks','Explain one important idea in your own words.'],
+['Section B · 2 marks','Give two differences, features or reasons related to this chapter.'],
+['Section B · 2 marks','Solve or explain one short textbook-style problem/application.'],
+['Section C · 4 marks','Explain a major topic with steps, evidence or examples.'],
+['Section C · 4 marks','Draw and label a relevant diagram/map/flowchart, or show a complete mathematical solution.'],
+['Section D · 12 marks','Answer a long question connecting two or more important ideas from the chapter. Include reasoning and examples.']
+];
+document.getElementById('questions').innerHTML=qs.map((q,i)=>'<section class="q"><span class="tag">'+q[0]+'</span><h3>Q'+(i+1)+'. '+q[1]+'</h3><textarea data-answer="'+i+'" placeholder="Write your answer here..."></textarea></section>').join('');
+function submitTest(){const score=Number(document.getElementById('score').value);if(!Number.isFinite(score)||score<0||score>30){alert('0 se 30 ke beech score likho.');return}const answers={};document.querySelectorAll('[data-answer]').forEach(e=>answers[e.dataset.answer]=e.value);state.test1={date:new Date().toLocaleDateString('en-CA'),score,answers,mistakes:document.getElementById('mistakes').value};localStorage.setItem(key,JSON.stringify(state));document.getElementById('result').textContent='Test saved ✓ Score: '+score+'/30. Review your mistakes before the next revision.'}
+function askAI(){const prompt='Create a Class 9 '+subject+' mock test for the chapter "'+name+'". Ask me to paste or upload the chapter text/notes first if you do not know the exact edition. Do not invent facts or assume textbook contents. Once I provide the material, create a 30-mark test with MCQs, short answers, long answers and an answer key separately. Ask one question at a time if I request interactive mode.';window.open('https://chatgpt.com/?q='+encodeURIComponent(prompt),'_blank','noopener')}
+</script></main></body></html>
