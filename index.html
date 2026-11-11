@@ -57,7 +57,7 @@ input,select,textarea{border-radius:4px;min-height:44px}
  <div class="pill">🎯 लक्ष्य: 28 फरवरी 2027</div>
 </header>
 <section class="hero">
- <div><div class="pill">AI-POWERED STUDY PLANNER</div><h2>आज थोड़ा पढ़ो,<br>कल और बेहतर बनो।</h2><p>अपना रोज़ का Routine देखो, Chapters पूरे करो, दो Mock Tests लगाओ और अपनी Progress ट्रैक करो।</p><div class="actions"><button onclick="showTab('routine')">आज का Routine देखें</button><button class="secondary" onclick="showTab('chapters')">Chapter जोड़ें</button></div></div>
+ <div><div class="pill">AI-POWERED STUDY PLANNER</div><h2>आज थोड़ा पढ़ो,<br>कल और बेहतर बनो।</h2><p>अपना रोज़ का Routine देखो, Chapters पूरे करो, दो Mock Tests लगाओ और अपनी Progress ट्रैक करो।</p><div class="actions"><button onclick="showTab('routine')">आज का Routine देखें</button></div></div>
  <div class="hero-stat"><span>कुल पढ़ाई की Progress</span><strong id="overall">0%</strong><div class="progress"><i id="overallbar"></i></div><span id="chaptercount">0 Chapters added • 0 completed</span></div>
 </section>
 <nav class="tabs">
@@ -69,7 +69,7 @@ input,select,textarea{border-radius:4px;min-height:44px}
 </nav>
 <main>
 <section id="dashboard" class="tabpage">
- <div class="section-title"><div><h2>तुम्हारे Subjects</h2><p>तुम्हारी बताई किताबों के Chapters पहले से जोड़े गए हैं।</p></div><button class="secondary" onclick="showTab('chapters')">+ Add Chapter</button></div>
+ <div class="section-title"><div><h2>तुम्हारे Subjects</h2><p>तुम्हारी किताबों के Chapters यहाँ देखें।</p></div></div>
  <div class="grid" id="subjectCards"></div>
  <div class="section-title"><div><h2>आज का लक्ष्य</h2><p id="todayLabel"></p></div><span class="tag">2 घंटे / दिन</span></div>
  <div class="panel" id="todayPlan"></div>
@@ -89,15 +89,8 @@ input,select,textarea{border-radius:4px;min-height:44px}
  <div class="panel"><div class="schedule" id="cycle"></div><p class="muted small">यह Cycle लगातार चलता रहेगा। अगर किसी Chapter को अधिक समय चाहिए, तो उसे अगले Cycle में जारी रखो।</p></div>
 </section>
 <section id="chapters" class="tabpage hidden">
- <div class="section-title"><div><h2>Chapter Manager</h2><p>Index/Contents देखकर हर किताब के Chapters यहाँ जोड़ो।</p></div></div>
- <div class="panel">
-  <div class="formrow">
-   <div><label>Subject</label><select id="subjectSelect"></select></div>
-   <div><label>Chapter का नाम</label><input id="chapterName" placeholder="जैसे: Chapter 1 - ..."></div>
-  </div>
-  <div class="actions"><button onclick="addChapter()">+ Chapter Add करें</button><button class="ghost" onclick="addSample()">Demo chapters जोड़ें</button></div>
-  <div class="notice">तुम्हारी बताई किताबों के Chapters पहले से जोड़े गए हैं। English Grammar/ writing और Hindi Grammar के topics अभ्यास-सूची हैं; अपने स्कूल के दिए syllabus से मिलान कर लेना। AI 417 की सूची CBSE 2026–27 curriculum units पर आधारित है, अलग पुस्तक के chapter numbers नहीं।</div>
- </div>
+ <div class="section-title"><div><h2>Chapters & Tests</h2><p>अपने Chapters खोलो और Revision तथा Mock Tests की Progress देखो।</p></div></div>
+
  <div class="section-title"><div><h2>तुम्हारे Chapters</h2><p>आज Revision और अगले दिन Mock Test पूरा करने पर Chapter complete होगा।</p></div><select id="filterSubject" style="max-width:190px" onchange="renderChapters()"><option value="all">सभी Subjects</option></select></div>
  <div class="panel" id="chapterList"></div>
 </section>
@@ -154,7 +147,7 @@ function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','
 function askAI(){let q=document.getElementById('question').value.trim();if(!q){alert('अपना सवाल लिखें।');return}document.getElementById('chatbox').innerHTML+=`<div class="bubble user">${escapeHtml(q)}</div><div class="bubble bot">ChatGPT एक नए टैब में खुल रहा है। वहाँ अपना सवाल पूछ सकते हो।</div>`;document.getElementById('chatbox').scrollTop=99999;window.open('https://chatgpt.com/?q='+encodeURIComponent(q),'_blank','noopener')}
 function copyQuestion(){let q=document.getElementById('question').value.trim();if(!q){alert('पहले सवाल लिखें।');return}navigator.clipboard?.writeText(q).then(()=>alert('सवाल Copy हो गया।')).catch(()=>alert('Copy नहीं हुआ; सवाल को manually select करें।'))}
 function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='study-master-9-progress.json';a.click();URL.revokeObjectURL(a.href)}
-function init(){let s=document.getElementById('subjectSelect'),f=document.getElementById('filterSubject');subjects.forEach(x=>{s.add(new Option(x.name,x.id));f.add(new Option(x.name,x.id))});renderRoutine();renderAll()}
+function init(){let f=document.getElementById('filterSubject');subjects.forEach(x=>f.add(new Option(x.name,x.id)));renderRoutine();renderAll()}
 init();
 if(location.hash==='#chapters') showTab('chapters');
 </script>
