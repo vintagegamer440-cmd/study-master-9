@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Class 9 Science, Social Science, English, Hindi and AI 417 chapter-wise original practice exercises with answers."><title>All Subjects Exercise Bank | Study Master 9</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#142238;--line:#405775;--ink:#eef4ff;--muted:#b7c5d9;--accent:#75c7ff;--good:#6ee7c2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,Arial}.wrap{max-width:1050px;margin:auto;padding:20px}a{color:var(--accent)}h1{font-size:clamp(28px,5vw,42px)}.muted{color:var(--muted)}.bar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.bar button,select{background:#203b5a;color:var(--ink);border:1px solid var(--line);padding:10px 13px;border-radius:5px;min-height:44px}.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px;margin:13px 0}.unit{border-left:3px solid var(--good);padding:8px 13px;margin:12px 0;background:#102b31}.answer{color:#d2f8ed}.tag{font-size:12px;color:#b8d9ff}.qtitle{font-weight:700}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}@media(max-width:600px){.wrap{padding:12px}.card{padding:13px}}
+</style></head><body><main class="wrap">
+<a href="./study-material.html">← Study Material</a><h1>All Subjects — Chapter-wise Exercise Bank</h1>
+<p class="muted">Science · Social Science · English · Hindi · AI 417. Har listed chapter ke liye original practice questions aur answer hints/solutions diye gaye hain. Ye NCERT/CBSE ki official answer key nahi hai; apne school ke prescribed edition aur teacher ke syllabus se match kar lena.</p>
+<div class="card"><b>Is bank mein:</b> short Q&A, concept checks, MCQ, grammar/practical questions, application questions aur answer keys. Literature ke answers ko apne chapter ke exact passage ke saath verify karke likhna.</div>
+<div class="bar"><button onclick="show('all')">All Subjects</button><button onclick="show('science')">Science</button><button onclick="show('sst')">Social Science</button><button onclick="show('english')">English</button><button onclick="show('hindi')">Hindi</button><button onclick="show('ai')">AI 417</button></div>
+<div id="content"></div>
+<script>
+const banks = [
+{subject:'science',name:'Science — Exploration',chapters:[
+['Ch 1 · Exploration: Entering the World of Secondary Science',[
+['What is a scientific investigation?','A planned process of asking a testable question, observing, collecting evidence and drawing a conclusion.'],
+['Why should an experiment be repeated?','Repeating helps check reliability and reduces the effect of accidental errors.'],
+['MCQ: Which is the best basis for a scientific conclusion?','(A) Guess (B) Evidence and observations (C) Rumour (D) Preference — Answer: (B).']]],
+['Ch 2 · Cell: The Building Block of Life',[
+['Why is a cell called the basic unit of life?','Because it is the smallest structural and functional unit that performs essential life processes.'],
+['Name two structures found in plant cells that are generally absent in animal cells.','Cell wall and chloroplasts.'],
+['MCQ: Which organelle controls most cell activities?','(A) Nucleus (B) Vacuole (C) Cell wall (D) Cytoplasm — Answer: (A).']]],
+['Ch 3 · Tissues in Action',[
+['What is a tissue?','A group of similar cells working together to perform a particular function.'],
+['Differentiate xylem and phloem.','Xylem mainly transports water and minerals; phloem transports prepared food through the plant.'],
+['Why do multicellular organisms need specialised tissues?','Specialisation divides work among cells and makes body functions more efficient.']]],
+['Ch 4 · Describing Motion Around Us',[
+['Define speed and write its SI unit.','Speed is distance travelled per unit time; SI unit is metre per second (m/s).'],
+['A cyclist covers 120 m in 20 s. Find average speed.','Average speed = distance/time = 120/20 = 6 m/s.'],
+['What does a horizontal line on a distance–time graph indicate?','The object is at rest because its distance is not changing with time.']]],
+['Ch 5 · Exploring Mixtures and Their Separation',[
+['What is a mixture?','A physical combination of two or more substances in which each component retains its own properties.'],
+['Which method separates insoluble sand from water?','Filtration.'],
+['Choose a method to obtain salt from salt solution.','Evaporation or crystallisation, depending on the desired purity and crystal formation.']]],
+['Ch 6 · How Forces Affect Motion',[
+['What is force?','A push or pull that can change an object’s state of motion, direction or shape.'],
+['State the SI unit of force.','Newton (N).'],
+['A 2 kg object accelerates at 3 m/s². Find the net force.','F = ma = 2 × 3 = 6 N.']]],
+['Ch 7 · Work, Energy and Simple Machines',[
+['When is work done in physics?','When a force causes displacement with a component along the direction of force.'],
+['Write the SI unit of work and energy.','Joule (J).'],
+['Why is a ramp useful?','It is an inclined plane that allows a load to be raised with less effort over a longer distance.']]],
+['Ch 8 · Journey Inside the Atom',[
+['Name the three main subatomic particles.','Protons, neutrons and electrons.'],
+['Where are protons and neutrons located?','In the nucleus of an atom.'],
+['What is the charge of an electron?','Negative charge.']]],
+['Ch 9 · Atomic Foundations of Matter',[
+['What is an atom?','The smallest unit of an element that retains its chemical identity.'],
+['Define molecule.','A group of two or more atoms chemically bonded together.'],
+['How many atoms are present in one H₂O molecule?','Three atoms: two hydrogen and one oxygen.']]],
+['Ch 10 · Sound Waves: Characteristics and Applications',[
+['How is sound produced?','Sound is produced by vibrating objects.'],
+['Can sound travel through a vacuum? Explain.','No. Sound needs a material medium to transfer vibrations.'],
+['What determines pitch?','Frequency; higher frequency generally means higher pitch.']]],
+['Ch 11 · Reproduction: How Life Continues',[
+['Why is reproduction important for a species?','It produces new individuals and helps ensure continuity of the species.'],
+['What is the difference between sexual and asexual reproduction?','Sexual reproduction involves fusion of gametes; asexual reproduction involves one parent and no fusion of gametes.'],
+['Give one example of asexual reproduction.','Binary fission in Amoeba (one example).']]],
+['Ch 12 · Patterns in Life: Diversity and Classification',[
+['Why do scientists classify organisms?','Classification organises biodiversity and makes identification and study easier.'],
+['What is a characteristic used in classification?','A shared feature such as cell type, body organisation or mode of nutrition.'],
+['What is biodiversity?','The variety of living organisms in a region or on Earth.']]],
+['Ch 13 · Earth as a System: Energy, Matter and Life',[
+['Name the major interacting Earth systems.','Geosphere, hydrosphere, atmosphere and biosphere.'],
+['How does the Sun support most ecosystems?','It provides energy that producers capture during photosynthesis, supporting food chains.'],
+['Give one example of interaction between two Earth systems.','Rain from the atmosphere enters rivers and soil in the hydrosphere/geosphere and supports living organisms in the biosphere.']]]
+]},
+{subject:'sst',name:'Social Science — India and Beyond',chapters:[
+['Part 1 Ch 1 · Understanding Social Science',[
+['Name the four broad disciplines commonly included in social science.','History, Geography, Political Science/Civics and Economics.'],
+['Why do social scientists use evidence?','Evidence helps explain human societies and evaluate claims instead of relying only on opinions.']]],
+['Part 1 Ch 2 · Shaping of the Earth’s Surface',[
+['Differentiate weathering and erosion.','Weathering breaks rocks down in place; erosion transports the loosened material.'],
+['Name two agents that shape landforms.','Running water and wind (also glaciers, waves and groundwater).']]],
+['Part 1 Ch 3 · Atmosphere and Climate',[
+['Differentiate weather and climate.','Weather is the short-term state of the atmosphere; climate is the long-term pattern of conditions in a region.'],
+['Name the most abundant gas in Earth’s atmosphere.','Nitrogen, about 78% by volume in dry air.']]],
+['Part 1 Ch 4 · Early Humans and Beginning of Civilisation',[
+['Why was control of fire important to early humans?','It provided warmth, protection, light and helped make some foods easier to eat.'],
+['What is archaeology?','The study of past human life through material remains such as tools, pottery, buildings and burials.']]],
+['Part 1 Ch 5 · State and Society up to 1000 CE',[
+['What is a state in history/civics?','A political organisation exercising authority over a territory and its people.'],
+['Name two sources historians may use to study early states.','Inscriptions and coins (also texts, monuments and archaeological remains).']]],
+['Part 1 Ch 6 · Democracy',[
+['What is democracy?','A system in which people participate in governing, directly or through elected representatives.'],
+['Why are rights and rule of law important in a democracy?','They protect people’s freedoms and ensure that public power is exercised under known laws.']]],
+['Part 1 Ch 7 · Elections',[
+['Why are elections held?','To let eligible citizens choose representatives and hold them accountable.'],
+['What is a secret ballot?','A voting method that protects the voter’s choice from being publicly known.']]],
+['Part 1 Ch 8 · The Problem of Choice',[
+['What is scarcity in economics?','Resources are limited while human wants are many.'],
+['Define opportunity cost.','The value of the next-best alternative given up when a choice is made.']]],
+['Part 1 Ch 9 · What Drives the Market',[
+['What is demand?','The quantity of a good or service consumers are willing and able to buy at different prices over a period.'],
+['What usually happens to quantity demanded when price rises, other things equal?','It generally falls, illustrating the law of demand.']]],
+['Part 2 Ch 1 · Oceans and Life',[
+['Why are oceans important for Earth’s climate?','They store and redistribute heat and influence rainfall and weather patterns.'],
+['What is a marine ecosystem?','An ecosystem in saltwater environments, such as oceans, coral reefs and estuaries.']]],
+['Part 2 Ch 2 · Life on Earth',[
+['What is an ecosystem?','A community of organisms interacting with one another and with their physical environment.'],
+['Why is conservation of biodiversity important?','It supports ecosystem stability, resources, genetic diversity and life-support services.']]],
+['Part 2 Ch 3 · Resistance and Resilience (1000–1700 CE)',[
+['What does resistance mean in a historical context?','Actions by individuals or groups to oppose authority, control or unwanted change.'],
+['Why should historical events be studied from multiple sources?','Different sources provide different viewpoints and help historians compare evidence.']]],
+['Part 2 Ch 4 · Governance and Public Policy',[
+['What is public policy?','A set of decisions and actions taken by public authorities to address an issue.'],
+['Name two stages in a policy process.','Identifying a problem and implementing a response (other stages include consultation and evaluation).']]],
+['Part 2 Ch 5 · Managing Your Personal Finances',[
+['Why is a budget useful?','It compares income and planned expenses, helping people make informed spending and saving decisions.'],
+['What is the difference between saving and borrowing?','Saving sets aside money for future use; borrowing means receiving money now that must be repaid under agreed terms.']]],
+['Part 2 Ch 6 · From Ideas to Startups',[
+['Who is an entrepreneur?','A person who organises resources to develop a product or service and takes responsibility for the venture.'],
+['What is a prototype?','An early model used to test an idea and gather feedback before wider production.']]]
+]},
+{subject:'english',name:'English — Kaveri & Grammar',chapters:[
+['Kaveri Ch 1 · How I Taught My Grandmother to Read; Bharat Our Land',[
+['What is the central value highlighted by the prose lesson?','The importance of education, determination and respect across generations.'],
+['Write a short response: Why is literacy empowering?','Literacy helps people read independently, access information and participate more confidently in society.']]],
+['Kaveri Ch 2 · The Pot Maker; Gifts of Grace',[
+['What can a potter’s work teach us about patience and skill?','Craft requires practice, careful observation and respect for materials; skill improves through sustained effort.'],
+['Why should every honest vocation be respected?','Every useful occupation contributes to society and deserves dignity.']]],
+['Kaveri Ch 3 · Winds of Change; Canvas of Soil',[
+['Explain the phrase “winds of change” as a literary image.','It suggests new ideas or circumstances that bring change to people or society.'],
+['Why is soil important to life?','Soil supports plant growth, stores water and nutrients, and provides habitat for many organisms.']]],
+['Kaveri Ch 4 · Vitamin-M; I Cannot Remember My Mother',[
+['What does the title “Vitamin-M” suggest as a possible theme?','It invites readers to think about the value of a quality or experience represented by “M”; support the interpretation with the lesson’s actual details.'],
+['How can memory shape a person’s connection with family?','Memories preserve feelings, stories and experiences that help people understand their relationships.']]],
+['Kaveri Ch 5 · Limitless Possibilities; Nine Gold Medals',[
+['What attitude helps people explore limitless possibilities?','Curiosity, perseverance, willingness to learn and openness to new opportunities.'],
+['What message about sportsmanship is conveyed by stories of supportive competitors?','Human kindness and fair play can matter more than winning alone.']]],
+['Kaveri Ch 6 · Twin Melodies; A Friend Found in Music',[
+['How can music connect people?','Music communicates emotion and shared experience across different backgrounds.'],
+['Give two benefits of practising a musical skill.','It develops discipline and listening; it can also improve coordination and creative expression.']]],
+['Kaveri Ch 7 · Carrier of Words; Words',[
+['Why are words called powerful?','They can communicate knowledge, express feelings, influence decisions and build relationships.'],
+['How can a reader identify the tone of a poem?','Notice word choice, imagery, rhythm and the speaker’s attitude.']]],
+['Kaveri Ch 8 · Follow That Dream; Believe in Yourself',[
+['Name two habits that help turn a goal into action.','Breaking it into manageable steps and reviewing progress regularly.'],
+['What does self-belief mean?','Trusting that one can learn and make an effort, while recognising that improvement takes practice.']]],
+['Grammar · Tenses',[
+['Fill in: She ___ (read) every evening.','reads.'],
+['Change to past: They play football.','They played football.']]],
+['Grammar · Modals',[
+['Choose a modal for polite request: ___ you please help me?','Could you please help me?'],
+['What does “must” express in “You must wear a helmet”?','Strong obligation or necessity.']]],
+['Grammar · Reported Speech',[
+['Change to reported speech: He said, “I am tired.”','He said that he was tired.'],
+['Change to reported speech: Mira said, “I will come.”','Mira said that she would come.']]],
+['Grammar · Conditional Clauses',[
+['Complete: If you heat ice, it ___.','melts.'],
+['Complete: If I had more time, I ___ (learn) guitar.','would learn.']]],
+['Grammar · Subject–Verb Concord',[
+['Choose: Each of the students (is/are) ready.','is. “Each” takes a singular verb.'],
+['Correct the sentence: The list of items are long.','The list of items is long.']]],
+['Grammar · Determiners',[
+['Fill in: There are ___ apples in the basket. (some/any)','some.'],
+['Choose: I have ___ information. (many/much)','much.']]],
+['Grammar · Noun and Relative Clauses',[
+['Identify the noun clause: I know what she wants.','“what she wants” is the noun clause; it acts as the object of “know”.'],
+['Join using a relative clause: I met a girl. She won the race.','I met a girl who won the race.']]],
+['Writing · Notice, Letter and Factual Description',[
+['Name four parts of a formal notice.','Name of organisation, NOTICE, date, heading, body and writer’s name/designation (any four).'],
+['Give two features of a factual description.','Clear objective details and an organised sequence; avoid unsupported opinions.']]]
+]},
+{subject:'hindi',name:'हिंदी — गंगा एवं व्याकरण',chapters:[
+['गंगा पाठ 1 · दो बैलों की कथा',[
+['कहानी में पशुओं के माध्यम से कौन-से मानवीय गुण उभरते हैं?','मित्रता, निष्ठा, आत्मसम्मान और स्वतंत्रता की भावना जैसे गुण उभरते हैं।'],
+['कहानी का संदेश अपने शब्दों में लिखिए।','कहानी संवेदनशीलता, जीवों के प्रति करुणा और सच्चे संबंधों के महत्व पर विचार करने को प्रेरित करती है।']]],
+['गंगा पाठ 2 · क्या लिखूँ?',[
+['शीर्षक “क्या लिखूँ?” किस प्रकार की दुविधा की ओर संकेत करता है?','यह विचारों या अनुभवों को सही शब्दों में व्यक्त करने की कठिनाई अथवा विषय-चयन की दुविधा का संकेत देता है।'],
+['लेखन को प्रभावी बनाने के दो उपाय लिखिए।','विचारों को क्रम में रखना और सरल, सटीक भाषा का प्रयोग करना।']]],
+['गंगा पाठ 3 · संवादहीन',[
+['“संवादहीनता” से क्या आशय है?','जब व्यक्ति एक-दूसरे से खुलकर बात नहीं करते और विचारों/भावनाओं का आदान-प्रदान रुक जाता है।'],
+['संवाद की कमी से क्या समस्या हो सकती है?','गलतफहमियाँ, दूरी और समस्याओं का समाधान न होना।']]],
+['गंगा पाठ 4 · ऐसी भी बातें होती हैं',[
+['पाठ के शीर्षक से पाठक में कैसी जिज्ञासा उत्पन्न होती है?','यह रोजमर्रा की अनोखी या अप्रत्याशित घटनाओं पर ध्यान देने की जिज्ञासा जगाता है।'],
+['किसी गद्य-पाठ का संदेश पहचानने के दो आधार लिखिए।','मुख्य घटना/विचार और लेखक द्वारा प्रस्तुत निष्कर्ष या दृष्टिकोण।']]],
+['गंगा पाठ 5 · आखिरी चट्टान तक',[
+['शीर्षक में “आखिरी चट्टान तक” किस भावना का संकेत दे सकता है?','लक्ष्य तक पहुँचने के दृढ़ निश्चय, साहस और निरंतर प्रयास का संकेत।'],
+['कठिन लक्ष्य पाने के लिए कौन-से गुण उपयोगी हैं?','धैर्य, तैयारी, अनुशासन और परिस्थिति के अनुसार निर्णय लेना।']]],
+['गंगा पाठ 6 · रीढ़ की हड्डी',[
+['“रीढ़ की हड्डी” मुहावरे का सामान्य भावार्थ क्या है?','साहस, आत्मसम्मान या किसी व्यवस्था का मुख्य सहारा।'],
+['नाटक/संवाद पढ़ते समय किन बातों पर ध्यान देना चाहिए?','पात्र, संवाद, मंच-स्थिति, संघर्ष और संवादों से प्रकट विचार।']]],
+['गंगा पाठ 7 · मैं और मेरा देश',[
+['देश के प्रति जिम्मेदारी का एक उदाहरण दीजिए।','नियमों का पालन करना, सार्वजनिक संपत्ति की रक्षा करना और समाज के हित में योगदान देना।'],
+['देशप्रेम और जिम्मेदार नागरिकता में क्या संबंध है?','सच्चा देशप्रेम नागरिकों को देश और समाज के प्रति जिम्मेदार व्यवहार के लिए प्रेरित करता है।']]],
+['गंगा पाठ 8 · पद',[
+['कविता/पद का भावार्थ लिखते समय किन बातों को शामिल करें?','मुख्य भाव, वक्ता/कवि का दृष्टिकोण, प्रमुख बिंब और संदेश।'],
+['काव्य में लय का क्या महत्व है?','लय कविता को संगीतात्मकता देती है और भावों को प्रभावशाली बनाती है।']]],
+['गंगा पाठ 9 · राम-लक्ष्मण-परशुराम संवाद',[
+['संवाद-आधारित काव्यांश में पात्रों के स्वभाव कैसे पहचाने जाते हैं?','उनकी भाषा, तर्क, प्रतिक्रिया और दूसरे पात्रों के प्रति व्यवहार से।'],
+['संवाद का नाटकीय प्रभाव किन तत्वों से बनता है?','विरोधी विचार, तीखे/प्रभावी कथन, भावनाएँ और घटनाक्रम।']]],
+['गंगा पाठ 10 · भारति, जय, विजयकरे!',[
+['देशभक्ति कविता में उत्साह उत्पन्न करने वाले दो काव्य-तत्व लिखिए।','ओजपूर्ण शब्दावली और प्रेरक संबोधन/लय।'],
+['कविता का केंद्रीय भाव लिखने के लिए क्या करें?','बार-बार आने वाले विचारों और कवि के मुख्य संदेश को अपने शब्दों में संक्षेपित करें।']]],
+['गंगा पाठ 11 · झाँसी की रानी',[
+['रानी लक्ष्मीबाई को भारतीय इतिहास में क्यों याद किया जाता है?','1857 के विद्रोह में उनके नेतृत्व, साहस और प्रतिरोध के लिए।'],
+['ऐतिहासिक कविता पढ़ते समय तथ्य और काव्य-कल्पना में अंतर क्यों समझना चाहिए?','ताकि ऐतिहासिक जानकारी और कविता की भावात्मक प्रस्तुति दोनों का सही अर्थ समझ सकें।']]],
+['गंगा पाठ 12 · घर की याद',[
+['घर की याद से कौन-सी भावनाएँ जुड़ सकती हैं?','अपनापन, सुरक्षा, परिवार, स्मृतियाँ और कभी-कभी विरह।'],
+['कविता में भाव पहचानने के दो संकेत लिखिए।','शब्द-चयन, बिंब, लय और वक्ता की मनःस्थिति।']]],
+['व्याकरण · भाषा, लिपि और वर्ण-विचार',[
+['भाषा और लिपि में अंतर बताइए।','भाषा विचार व्यक्त करने का माध्यम है; लिपि भाषा को लिखने के लिए प्रयुक्त चिह्नों की व्यवस्था है।'],
+['हिंदी की लिपि कौन-सी है?','देवनागरी।']]],
+['व्याकरण · शब्द-भेद, संज्ञा, सर्वनाम, विशेषण',[
+['“सीमा सुंदर चित्र बनाती है।” वाक्य में संज्ञा और विशेषण पहचानिए।','संज्ञा: सीमा, चित्र; विशेषण: सुंदर।'],
+['सर्वनाम किसे कहते हैं?','जो शब्द संज्ञा के स्थान पर प्रयुक्त हो, जैसे वह, मैं, तुम।']]],
+['व्याकरण · क्रिया और काल',[
+['“बच्चे खेल रहे हैं।” क्रिया पहचानिए।','खेल रहे हैं।'],
+['“मैं कल दिल्ली जाऊँगा।” कौन-सा काल है?','भविष्यत् काल।']]],
+['व्याकरण · उपसर्ग और प्रत्यय',[
+['“असफल” में उपसर्ग बताइए।','अ- उपसर्ग।'],
+['“मिठास” शब्द में प्रत्यय बताइए।','-आस प्रत्यय।']]],
+['व्याकरण · संधि और समास',[
+['संधि किसे कहते हैं?','दो वर्णों के मेल से होने वाले ध्वनि/रूप परिवर्तन को संधि कहते हैं।'],
+['समास का सामान्य अर्थ क्या है?','दो या अधिक शब्दों को संक्षिप्त रूप में मिलाकर एक समस्त पद बनाना।']]],
+['व्याकरण · वाक्य-रचना, विराम-चिह्न, मुहावरे',[
+['प्रश्नवाचक वाक्य के अंत में कौन-सा चिह्न लगता है?','प्रश्नवाचक चिह्न (?)।'],
+['“नाक में दम करना” मुहावरे का अर्थ लिखिए।','बहुत परेशान करना।']]],
+['भाषा कौशल · अपठित गद्यांश और पद्यांश',[
+['अपठित गद्यांश हल करने का सही तरीका क्या है?','पहले पूरा गद्यांश ध्यान से पढ़ें, मुख्य विचार पहचानें और उत्तर उसी में उपलब्ध जानकारी के आधार पर दें।'],
+['पद्यांश का भावार्थ लिखते समय क्या न करें?','पंक्तियों की केवल शब्दशः नकल न करें; भाव को सरल अपने शब्दों में लिखें।']]]
+]},
+{subject:'ai',name:'Artificial Intelligence — CBSE 417',chapters:[
+['Part A · Communication Skills-I',[
+['What is active listening?','Listening with attention, understanding the speaker and responding appropriately.'],
+['Name two forms of non-verbal communication.','Facial expressions and gestures (also posture and eye contact).']]],
+['Part A · Self-Management Skills-I',[
+['What is self-management?','Managing one’s emotions, time, behaviour and responsibilities to work towards goals.'],
+['Write one SMART-goal feature.','A SMART goal is specific, measurable, achievable, relevant and time-bound.']]],
+['Part A · ICT Skills-I',[
+['What is an operating system?','System software that manages hardware/resources and provides services for applications.'],
+['Why are strong passwords important?','They make unauthorised access more difficult; passwords should be unique and kept private.']]],
+['Part A · Entrepreneurial Skills-I',[
+['Name two qualities of an entrepreneur.','Initiative and problem-solving (also creativity, planning and resilience).'],
+['What is a business idea?','A proposed product or service intended to solve a problem or meet a need.']]],
+['Part A · Green Skills-I',[
+['What is sustainable development?','Development that meets present needs while protecting the ability of future generations to meet theirs.'],
+['Give two ways to conserve resources.','Save electricity and water; reuse/recycle materials.']]],
+['Part B · AI Reflection, Project Cycle and Ethics',[
+['Name the main stages of an AI project cycle.','Problem scoping, data acquisition, data exploration, modelling and evaluation.'],
+['Why is fairness important in AI?','Unfair data or design can produce biased outcomes and disadvantage groups of people.']]],
+['Part B · Data Literacy',[
+['What is data literacy?','The ability to read, understand, analyse and communicate information from data.'],
+['Why should data sources be checked?','To assess accuracy, relevance, bias, date and reliability.']]],
+['Part B · Math for AI',[
+['Find the mean of 2, 4, 6 and 8.','Mean = (2+4+6+8)/4 = 5.'],
+['What is probability of getting heads on a fair coin toss?','1/2.']]],
+['Part B · Introduction to Generative AI',[
+['What is generative AI?','AI that creates new content such as text, images, audio or code based on learned patterns.'],
+['Why should AI-generated information be verified?','It may contain errors, bias or invented details; check important claims against reliable sources.']]],
+['Part B · Introduction to Python',[
+['What is the output of print(2 + 3 * 4)?','14, because multiplication is evaluated before addition.'],
+['Which Python function displays text or values?','print().']]],
+['Practical · Python Practice',[
+['Write a line of Python to store 9 in variable score.','score = 9'],
+['What does len("AI") return?','2.']]],
+['Project · Portfolio and Field Work',[
+['What should a project problem statement describe?','The issue being addressed, who is affected and why solving it matters.'],
+['Name two items to include in a project portfolio.','Project objective and process/evidence (also results, reflection and references).']]]
+]}
+];
+function esc(x){return String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function show(which){const root=document.getElementById('content');root.innerHTML='';banks.filter(b=>which==='all'||b.subject===which).forEach(b=>{const section=document.createElement('section');section.className='card';section.innerHTML='<h2>'+esc(b.name)+'</h2><p class="tag">'+b.chapters.length+' chapter/topic sections · solved practice</p>';b.chapters.forEach((ch,i)=>{const box=document.createElement('div');box.className='card';box.innerHTML='<h3>'+esc(ch[0])+'</h3>'+ch[1].map((qa,j)=>'<div class="unit"><div class="qtitle">'+(j+1)+'. '+esc(qa[0])+'</div><div class="answer"><b>Answer:</b> '+esc(qa[1])+'</div></div>').join('');section.appendChild(box)});root.appendChild(section)})}
+show('all');
+</script>
+<p class="muted">Note: Literature questions are revision prompts. Match plot-specific details, quotations, poet/author names and exact textbook exercise wording with your prescribed book. Original supplementary questions are not copied from the textbook.</p>
+<p><a href="./maths-notes.html">Maths Part 1</a> · <a href="./maths-part2-notes.html">Maths Part 2</a> · <a href="./study-material.html">Study Material</a> · <a href="./index.html">Home</a></p>
+</main></body></html>
